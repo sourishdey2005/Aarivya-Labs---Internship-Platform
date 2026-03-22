@@ -6,58 +6,79 @@ const domains = [
   {
     name: 'Web Development',
     icon: Code,
-    description: 'Build modern, responsive web applications using React, Node.js, and the latest technologies.',
-    skills: ['React & Next.js', 'Node.js & Express', 'Tailwind CSS', 'Database Design'],
+    description: 'Master the art of building scalable web applications. From crafting intuitive user interfaces with React and Tailwind CSS to developing robust server-side logic with Node.js and Express. You will learn the full development lifecycle, including database integration and cloud deployment.',
+    skills: ['Full-Stack React & Node.js', 'Responsive UI/UX Design', 'RESTful API Development', 'Cloud Deployment (AWS/Vercel)'],
+    highlights: ['Build a real-world E-commerce platform', 'Implement secure JWT authentication', 'Optimize web performance & SEO', 'Version control with Git/GitHub'],
     color: 'bg-blue-50',
-    iconColor: 'text-blue-600'
+    iconColor: 'text-blue-600',
+    duration: '2-3 Months',
+    level: 'Beginner to Intermediate'
   },
   {
     name: 'AI & Machine Learning',
     icon: Brain,
-    description: 'Dive into neural networks, deep learning, and computer vision. Build intelligent systems.',
-    skills: ['Neural Networks', 'Computer Vision', 'NLP', 'Model Deployment'],
+    description: 'Explore the frontier of artificial intelligence. Gain hands-on experience with Python-based frameworks like TensorFlow and PyTorch. Learn to build, train, and optimize neural networks for computer vision, natural language processing, and predictive analytics.',
+    skills: ['Deep Learning & Neural Nets', 'Computer Vision (OpenCV)', 'Natural Language Processing', 'Model Optimization & Tuning'],
+    highlights: ['Develop an Image Recognition system', 'Build a Sentiment Analysis tool', 'Deploy models using Flask/FastAPI', 'Work with large-scale datasets'],
     color: 'bg-indigo-50',
-    iconColor: 'text-indigo-600'
+    iconColor: 'text-indigo-600',
+    duration: '3 Months',
+    level: 'Intermediate'
   },
   {
     name: 'Data Analyst',
     icon: BarChart3,
-    description: 'Learn to extract insights from data, create visualizations, and help businesses make decisions.',
-    skills: ['SQL & NoSQL', 'Tableau/PowerBI', 'Statistical Analysis', 'Data Cleaning'],
+    description: 'Transform raw data into actionable business insights. Learn advanced SQL for data extraction, use Python for data manipulation, and master visualization tools like Tableau or PowerBI. Focus on statistical methods and trend analysis.',
+    skills: ['Advanced SQL Querying', 'Data Visualization (Tableau)', 'Statistical Hypothesis Testing', 'Business Intelligence Reporting'],
+    highlights: ['Create interactive executive dashboards', 'Perform market trend analysis', 'Automate data cleaning pipelines', 'Present data-driven business strategies'],
     color: 'bg-emerald-50',
-    iconColor: 'text-emerald-600'
+    iconColor: 'text-emerald-600',
+    duration: '2 Months',
+    level: 'Beginner'
   },
   {
     name: 'Data Science',
     icon: Database,
-    description: 'Master statistical analysis, predictive modeling, and big data processing to uncover patterns.',
-    skills: ['Python/R', 'Predictive Modeling', 'Big Data', 'Machine Learning'],
+    description: 'The intersection of statistics, programming, and domain expertise. Dive deep into complex datasets using big data technologies. Learn to build sophisticated predictive models and communicate complex findings through data storytelling.',
+    skills: ['Predictive Modeling (Scikit-learn)', 'Big Data Processing (Spark)', 'Exploratory Data Analysis', 'Data Storytelling & Reporting'],
+    highlights: ['Build a recommendation engine', 'Implement time-series forecasting', 'Handle unstructured data at scale', 'A/B testing and experimentation'],
     color: 'bg-cyan-50',
-    iconColor: 'text-cyan-600'
+    iconColor: 'text-cyan-600',
+    duration: '3-4 Months',
+    level: 'Intermediate to Advanced'
   },
   {
     name: 'Cyber Security',
     icon: Shield,
-    description: 'Learn ethical hacking, network security, and cryptography to protect digital assets.',
-    skills: ['Ethical Hacking', 'Network Security', 'Cryptography', 'Risk Management'],
+    description: 'Protect the digital world from evolving threats. Learn the fundamentals of ethical hacking, penetration testing, and network defense. Understand cryptography, secure coding practices, and risk assessment frameworks.',
+    skills: ['Ethical Hacking & Pen Testing', 'Network Security Protocols', 'Cryptography Fundamentals', 'Incident Response Planning'],
+    highlights: ['Conduct vulnerability assessments', 'Simulate real-world cyber attacks', 'Implement secure network architectures', 'Learn digital forensics basics'],
     color: 'bg-rose-50',
-    iconColor: 'text-rose-600'
+    iconColor: 'text-rose-600',
+    duration: '3 Months',
+    level: 'Intermediate'
   },
   {
     name: 'Research & Development',
     icon: Microscope,
-    description: 'Contribute to cutting-edge research in emerging technologies and push innovation boundaries.',
-    skills: ['Literature Review', 'Experimentation', 'Technical Writing', 'Prototyping'],
+    description: 'Be at the forefront of technological breakthroughs. Conduct literature reviews, design experiments, and build innovative prototypes. Learn the discipline of scientific research and technical documentation for emerging technologies.',
+    skills: ['Scientific Research Methods', 'Rapid Prototyping', 'Technical Paper Writing', 'Experimental Design'],
+    highlights: ['Publish a technical research paper', 'Develop a novel tech prototype', 'Collaborate on IP-focused projects', 'Present findings to industry experts'],
     color: 'bg-purple-50',
-    iconColor: 'text-purple-600'
+    iconColor: 'text-purple-600',
+    duration: '4-6 Months',
+    level: 'Advanced'
   },
   {
     name: 'Patent & Innovation',
     icon: Lightbulb,
-    description: 'Learn about intellectual property, patent filing, and turning ideas into protected assets.',
-    skills: ['IP Law Basics', 'Patent Searching', 'Drafting Claims', 'Innovation Strategy'],
+    description: 'Bridge the gap between technology and law. Understand the lifecycle of an invention, from ideation to legal protection. Learn how to conduct patent searches, draft technical claims, and navigate intellectual property rights.',
+    skills: ['Intellectual Property Strategy', 'Patent Search & Analysis', 'Drafting Technical Claims', 'Innovation Management'],
+    highlights: ['Draft a complete patent application', 'Conduct global prior-art searches', 'Analyze innovation market trends', 'Learn IP commercialization basics'],
     color: 'bg-amber-50',
-    iconColor: 'text-amber-600'
+    iconColor: 'text-amber-600',
+    duration: '2-3 Months',
+    level: 'Beginner to Intermediate'
   }
 ];
 
@@ -105,33 +126,58 @@ export default function Domains() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm hover:shadow-xl transition-all group flex flex-col h-full"
+                className="bg-white rounded-[2.5rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-blue-900/5 transition-all group flex flex-col h-full relative overflow-hidden"
               >
-                <div className={`w-16 h-16 rounded-2xl ${domain.color} ${domain.iconColor} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                  <domain.icon size={32} />
+                <div className="flex justify-between items-start mb-6">
+                  <div className={`w-16 h-16 rounded-2xl ${domain.color} ${domain.iconColor} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                    <domain.icon size={32} />
+                  </div>
+                  <div className="flex flex-col items-end gap-1">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 bg-slate-50 px-2 py-1 rounded-md">
+                      {domain.duration}
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-2 py-1 rounded-md">
+                      {domain.level}
+                    </span>
+                  </div>
                 </div>
+
                 <h3 className="text-2xl font-bold text-slate-900 mb-4">{domain.name}</h3>
-                <p className="text-slate-600 leading-relaxed mb-6">
+                <p className="text-slate-600 leading-relaxed mb-8 text-sm">
                   {domain.description}
                 </p>
                 
-                <div className="mb-8 flex-grow">
-                  <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">What you'll learn</h4>
-                  <ul className="space-y-2">
-                    {domain.skills.map((skill, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm text-slate-700">
-                        <div className={`w-1.5 h-1.5 rounded-full ${domain.iconColor.replace('text', 'bg')}`} />
-                        {skill}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="grid grid-cols-1 gap-8 mb-8 flex-grow">
+                  <div>
+                    <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Key Skills</h4>
+                    <ul className="grid grid-cols-1 gap-2.5">
+                      {domain.skills.map((skill, i) => (
+                        <li key={i} className="flex items-center gap-3 text-sm text-slate-700 font-medium">
+                          <div className={`w-2 h-2 rounded-full ${domain.iconColor.replace('text', 'bg')} shadow-sm`} />
+                          {skill}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-[0.2em] mb-4">Curriculum Highlights</h4>
+                    <ul className="space-y-2.5">
+                      {domain.highlights.map((highlight, i) => (
+                        <li key={i} className="flex items-start gap-3 text-xs text-slate-500 leading-relaxed">
+                          <div className="mt-1.5 w-1 h-1 rounded-full bg-slate-300 flex-shrink-0" />
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
 
                 <Link
                   to="/internship"
-                  className="w-full bg-slate-900 text-white py-4 rounded-xl font-semibold flex items-center justify-center gap-2 hover:bg-blue-600 transition-colors group-hover:shadow-lg group-hover:shadow-blue-100"
+                  className="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-blue-600 transition-all group-hover:shadow-xl group-hover:shadow-blue-200"
                 >
-                  Apply Now <ArrowRight size={18} />
+                  Apply for {domain.name} <ArrowRight size={18} />
                 </Link>
               </motion.div>
             ))}

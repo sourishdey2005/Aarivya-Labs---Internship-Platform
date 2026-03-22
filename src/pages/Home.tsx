@@ -1,6 +1,12 @@
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle2, Award, Users, Rocket, Code, Brain, Database, Shield, Microscope, Lightbulb } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { ArrowRight, CheckCircle2, Award, Users, Rocket, Code, Brain, Database, Shield, Microscope, Lightbulb, ChevronLeft, ChevronRight } from 'lucide-react';
+
+const carouselImages = [
+  "https://res.cloudinary.com/dodhvvewu/image/upload/v1774207478/892863fa-0496-4d7f-9158-c9207418d150_uphi2c.png",
+  "https://res.cloudinary.com/dodhvvewu/image/upload/v1774207448/654052281_914616747865242_7210948664801015668_n_wa6r77.png"
+];
 
 const domains = [
   { name: 'Web Development', icon: Code, color: 'blue' },
@@ -33,21 +39,34 @@ const testimonials = [
 ];
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+  const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-20 lg:py-32 bg-slate-50">
+      <section className="relative overflow-hidden py-12 lg:py-24 bg-slate-50">
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
           <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-blue-100 rounded-full blur-3xl opacity-50"></div>
           <div className="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] bg-indigo-100 rounded-full blur-3xl opacity-50"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-left"
             >
               <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest text-blue-600 uppercase bg-blue-50 rounded-full border border-blue-100">
                 Future-Ready Internships
@@ -59,7 +78,7 @@ export default function Home() {
                 Aarivya Labs provides students with high-impact internships in cutting-edge domains. 
                 Gain practical skills, work on live projects, and get mentored by industry experts.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <div className="flex flex-col sm:flex-row items-center justify-start gap-4">
                 <Link
                   to="/internship"
                   className="w-full sm:w-auto bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-all shadow-xl shadow-blue-200 flex items-center justify-center gap-2 group"
@@ -73,6 +92,57 @@ export default function Home() {
                   Explore Domains
                 </Link>
               </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative group"
+            >
+              <div className="aspect-[4/3] md:aspect-video bg-white rounded-3xl overflow-hidden shadow-2xl border-4 border-white relative">
+                <AnimatePresence mode="wait">
+                  <motion.img
+                    key={currentSlide}
+                    src={carouselImages[currentSlide]}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.5 }}
+                    className="w-full h-full object-contain bg-slate-50"
+                    referrerPolicy="no-referrer"
+                  />
+                </AnimatePresence>
+
+                {/* Carousel Controls */}
+                <button 
+                  onClick={prevSlide}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm p-2 rounded-full text-slate-900 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white"
+                >
+                  <ChevronLeft size={24} />
+                </button>
+                <button 
+                  onClick={nextSlide}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm p-2 rounded-full text-slate-900 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white"
+                >
+                  <ChevronRight size={24} />
+                </button>
+
+                {/* Indicators */}
+                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+                  {carouselImages.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentSlide(i)}
+                      className={`w-2 h-2 rounded-full transition-all ${currentSlide === i ? 'w-8 bg-blue-600' : 'bg-white/50 hover:bg-white'}`}
+                    />
+                  ))}
+                </div>
+              </div>
+              
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-600/10 rounded-full blur-2xl -z-10"></div>
+              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-indigo-600/10 rounded-full blur-2xl -z-10"></div>
             </motion.div>
           </div>
         </div>
@@ -146,17 +216,6 @@ export default function Home() {
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-slate-100 hidden md:block">
-                <div className="flex items-center gap-4">
-                  <div className="bg-blue-600 text-white p-3 rounded-xl">
-                    <Users size={24} />
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold text-slate-900">500+</p>
-                    <p className="text-sm text-slate-500">Interns Trained</p>
-                  </div>
-                </div>
               </div>
             </motion.div>
           </div>
