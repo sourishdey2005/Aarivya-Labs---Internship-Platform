@@ -1,6 +1,6 @@
 import { useState, FormEvent } from 'react';
 import { motion } from 'motion/react';
-import { Clock, Award, Users, Calendar, CheckCircle2, FileText, Send } from 'lucide-react';
+import { Clock, Award, Users, Calendar, CheckCircle2, FileText, Send, Loader2, AlertCircle } from 'lucide-react';
 
 export default function InternshipDetails() {
   const [formState, setFormState] = useState({
@@ -12,13 +12,53 @@ export default function InternshipDetails() {
     resumeLink: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 5000);
-    setFormState({ name: '', email: '', location: '', college: '', domain: '', resumeLink: '' });
+    setLoading(true);
+    setError(null);
+
+    const scriptUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL;
+
+    if (!scriptUrl) {
+      console.error('ERROR: VITE_GOOGLE_SHEETS_URL is not defined in environment variables.');
+      setError('System Configuration Error: Google Sheets URL is missing. Please check your AI Studio Settings.');
+      setLoading(false);
+      return;
+    }
+
+    try {
+      console.log('Attempting to submit to:', scriptUrl);
+      
+      // Prepare URL parameters to match your script's e.parameter[header] logic
+      const params = new URLSearchParams();
+      params.append('fullName', formState.name);
+      params.append('email', formState.email);
+      params.append('location', formState.location);
+      params.append('college', formState.college);
+      params.append('domain', formState.domain);
+      params.append('resumeLink', formState.resumeLink);
+
+      // Append parameters to the URL for the POST request
+      const scriptUrlWithParams = `${scriptUrl}?${params.toString()}`;
+
+      await fetch(scriptUrlWithParams, {
+        method: 'POST',
+        mode: 'no-cors',
+        cache: 'no-cache',
+      });
+
+      // With no-cors, we assume success if no error is thrown
+      setSubmitted(true);
+      setFormState({ name: '', email: '', location: '', college: '', domain: '', resumeLink: '' });
+    } catch (err) {
+      console.error('Submission error:', err);
+      setError('Failed to connect to Google Sheets. Please ensure your Web App is deployed correctly.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const indianStates = [
@@ -260,10 +300,27 @@ export default function InternshipDetails() {
                   </div>
                   <button 
                     type="submit"
-                    className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-100 flex items-center justify-center gap-2"
+                    disabled={loading}
+                    className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-all shadow-lg shadow-blue-100 flex items-center justify-center gap-2"
                   >
-                    Submit Application <Send size={18} />
+                    {loading ? (
+                      <>
+                        <Loader2 className="animate-spin" size={18} />
+                        Submitting...
+                      </>
+                    ) : (
+                      <>
+                        Submit Application <Send size={18} />
+                      </>
+                    )}
                   </button>
+
+                  {error && (
+                    <div className="flex items-center gap-2 text-rose-600 text-xs mt-2 bg-rose-50 p-3 rounded-lg">
+                      <AlertCircle size={14} />
+                      <span>{error}</span>
+                    </div>
+                  )}
                   <p className="text-[10px] text-slate-400 text-center">
                     By submitting, you agree to our terms and conditions regarding the internship program.
                   </p>
