@@ -6,8 +6,10 @@ export default function InternshipDetails() {
   const [formState, setFormState] = useState({
     name: '',
     email: '',
+    location: '',
+    college: '',
     domain: '',
-    resume: null as File | null,
+    resumeLink: '',
   });
   const [submitted, setSubmitted] = useState(false);
 
@@ -16,8 +18,15 @@ export default function InternshipDetails() {
     // Simulate form submission
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 5000);
-    setFormState({ name: '', email: '', domain: '', resume: null });
+    setFormState({ name: '', email: '', location: '', college: '', domain: '', resumeLink: '' });
   };
+
+  const indianStates = [
+    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", "Haryana", 
+    "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", 
+    "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", 
+    "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal", "Delhi", "Chandigarh", "Other"
+  ];
 
   return (
     <div className="pt-24 pb-20">
@@ -189,6 +198,31 @@ export default function InternshipDetails() {
                     />
                   </div>
                   <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">Location (India)</label>
+                    <select 
+                      required
+                      value={formState.location}
+                      onChange={(e) => setFormState({...formState, location: e.target.value})}
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none bg-white"
+                    >
+                      <option value="">Select Location</option>
+                      {indianStates.map(state => (
+                        <option key={state} value={state}>{state}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">College Name</label>
+                    <input 
+                      type="text" 
+                      required
+                      value={formState.college}
+                      onChange={(e) => setFormState({...formState, college: e.target.value})}
+                      placeholder="Your College Name"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                    />
+                  </div>
+                  <div>
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Preferred Domain</label>
                     <select 
                       required
@@ -197,6 +231,7 @@ export default function InternshipDetails() {
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none bg-white"
                     >
                       <option value="">Select a domain</option>
+                      <option value="all">All Domains (Exploratory)</option>
                       <option value="web">Web Development</option>
                       <option value="ai">AI & Machine Learning</option>
                       <option value="data-analyst">Data Analyst</option>
@@ -207,20 +242,19 @@ export default function InternshipDetails() {
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">Upload Resume (PDF)</label>
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">Upload Resume link (PDF)</label>
                     <div className="relative">
                       <input 
-                        type="file" 
-                        accept=".pdf"
+                        type="url" 
                         required
-                        onChange={(e) => setFormState({...formState, resume: e.target.files?.[0] || null})}
-                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                        value={formState.resumeLink}
+                        onChange={(e) => setFormState({...formState, resumeLink: e.target.value})}
+                        placeholder="https://drive.google.com/your-resume-link"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
                       />
-                      <div className="w-full px-4 py-3 rounded-xl border-2 border-dashed border-slate-200 text-slate-500 flex items-center justify-center gap-2 hover:border-blue-400 hover:text-blue-600 transition-all">
-                        <FileText size={20} />
-                        <span className="text-sm truncate">
-                          {formState.resume ? formState.resume.name : 'Choose file...'}
-                        </span>
+                      <div className="mt-1 text-[10px] text-slate-400 flex items-center gap-1">
+                        <FileText size={12} />
+                        <span>Provide a link to your PDF resume (Google Drive/Dropbox)</span>
                       </div>
                     </div>
                   </div>

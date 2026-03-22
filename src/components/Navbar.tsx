@@ -44,9 +44,12 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-              A
-            </div>
+            <img 
+              src="https://res.cloudinary.com/dodhvvewu/image/upload/v1774203845/f04cf0dd-2df9-47fc-a367-de32c43af3e4_vyswxk.png" 
+              alt="Aarivya Labs Logo" 
+              className="w-10 h-10 object-contain"
+              referrerPolicy="no-referrer"
+            />
             <span className="text-xl font-bold tracking-tight text-slate-900">
               Aarivya <span className="text-blue-600">Labs</span>
             </span>

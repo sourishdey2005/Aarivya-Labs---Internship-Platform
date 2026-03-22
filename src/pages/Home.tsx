@@ -141,8 +141,8 @@ export default function Home() {
             >
               <div className="aspect-video bg-slate-100 rounded-3xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://picsum.photos/seed/tech/800/600" 
-                  alt="Office environment" 
+                  src="https://res.cloudinary.com/dodhvvewu/image/upload/v1774204184/e52195d5-0cde-4b5c-9c38-b9fdfbcd3dee_i4uwpf.png" 
+                  alt="Engineering and Technology" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
                 />

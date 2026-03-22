@@ -10,9 +10,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="col-span-1 md:col-span-1">
             <Link to="/" className="flex items-center space-x-2 mb-6">
-              <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold text-lg">
-                A
-              </div>
+              <img 
+                src="https://res.cloudinary.com/dodhvvewu/image/upload/v1774203845/f04cf0dd-2df9-47fc-a367-de32c43af3e4_vyswxk.png" 
+                alt="Aarivya Labs Logo" 
+                className="w-8 h-8 object-contain"
+                referrerPolicy="no-referrer"
+              />
               <span className="text-xl font-bold tracking-tight text-white">
                 Aarivya <span className="text-blue-500">Labs</span>
               </span>

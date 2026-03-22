@@ -31,17 +31,19 @@ function LoadingScreen() {
       className="fixed inset-0 z-[100] bg-white flex items-center justify-center"
     >
       <div className="flex flex-col items-center">
-        <motion.div
+        <motion.img
+          src="https://res.cloudinary.com/dodhvvewu/image/upload/v1774203845/f04cf0dd-2df9-47fc-a367-de32c43af3e4_vyswxk.png"
+          alt="Aarivya Labs Logo"
           animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 180, 360],
+            scale: [1, 1.1, 1],
           }}
           transition={{
             duration: 2,
             repeat: Infinity,
             ease: "easeInOut",
           }}
-          className="w-16 h-16 bg-blue-600 rounded-2xl mb-4"
+          className="w-20 h-20 object-contain mb-4"
+          referrerPolicy="no-referrer"
         />
         <h2 className="text-xl font-bold text-slate-900 tracking-tight">
           Aarivya <span className="text-blue-600">Labs</span>
