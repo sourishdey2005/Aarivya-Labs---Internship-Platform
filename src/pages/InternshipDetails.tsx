@@ -30,9 +30,6 @@ export default function InternshipDetails() {
     }
 
     try {
-      console.log('Attempting to submit to:', scriptUrl);
-      
-      // Prepare URL parameters to match your script's e.parameter[header] logic
       const params = new URLSearchParams();
       params.append('fullName', formState.name);
       params.append('email', formState.email);
@@ -41,7 +38,6 @@ export default function InternshipDetails() {
       params.append('domain', formState.domain);
       params.append('resumeLink', formState.resumeLink);
 
-      // Append parameters to the URL for the POST request
       const scriptUrlWithParams = `${scriptUrl}?${params.toString()}`;
 
       await fetch(scriptUrlWithParams, {
@@ -50,9 +46,11 @@ export default function InternshipDetails() {
         cache: 'no-cache',
       });
 
-      // With no-cors, we assume success if no error is thrown
       setSubmitted(true);
-      setFormState({ name: '', email: '', location: '', college: '', domain: '', resumeLink: '' });
+      setFormState({ 
+        name: '', email: '', location: '', college: '', 
+        domain: '', resumeLink: '' 
+      });
     } catch (err) {
       console.error('Submission error:', err);
       setError('Failed to connect to Google Sheets. Please ensure your Web App is deployed correctly.');
@@ -69,19 +67,20 @@ export default function InternshipDetails() {
   ];
 
   return (
-    <div className="pt-24 pb-20">
+    <div className="pt-24 pb-20 bg-white min-h-screen">
       {/* Header */}
-      <section className="bg-slate-900 text-white py-20">
+      <section className="bg-slate-50 text-slate-900 py-20 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <motion.h1 
               initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="text-4xl md:text-5xl font-bold mb-6"
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-4xl md:text-5xl font-bold mb-6 text-blue-600"
             >
               Internship Program Details
             </motion.h1>
-            <p className="text-slate-400 text-lg leading-relaxed">
+            <p className="text-slate-600 text-lg leading-relaxed">
               Our internship program is designed to provide a comprehensive learning experience 
               that combines theoretical knowledge with practical application on real-world projects.
             </p>
@@ -95,7 +94,8 @@ export default function InternshipDetails() {
           <div className="lg:col-span-2 space-y-12">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               className="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-slate-100"
             >
               <h2 className="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-3">
@@ -151,7 +151,7 @@ export default function InternshipDetails() {
                   "Networking opportunities with industry leaders"
                 ].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3 text-slate-600">
-                    <CheckCircle2 className="text-green-500 mt-1 shrink-0" size={18} />
+                    <CheckCircle2 className="text-blue-600 mt-1 shrink-0" size={18} />
                     <span>{feature}</span>
                   </li>
                 ))}
@@ -166,27 +166,27 @@ export default function InternshipDetails() {
             </motion.div>
 
             <div className="bg-blue-50 rounded-3xl p-8 border border-blue-100">
-              <h3 className="text-xl font-bold text-blue-900 mb-4">Selection Process</h3>
+              <h3 className="text-xl font-bold text-blue-600 mb-4">Selection Process</h3>
               <div className="space-y-6">
                 <div className="flex gap-4">
                   <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold shrink-0">1</div>
                   <div>
-                    <h4 className="font-bold text-blue-900">Application Review</h4>
-                    <p className="text-sm text-blue-700">We review your resume and domain preference.</p>
+                    <h4 className="font-bold text-slate-900">Application Review</h4>
+                    <p className="text-sm text-slate-600">We review your resume and domain preference.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold shrink-0">2</div>
                   <div>
-                    <h4 className="font-bold text-blue-900">Technical Assessment</h4>
-                    <p className="text-sm text-blue-700">A short task or quiz to gauge your current knowledge.</p>
+                    <h4 className="font-bold text-slate-900">Technical Assessment</h4>
+                    <p className="text-sm text-slate-600">A short task or quiz to gauge your current knowledge.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
                   <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold shrink-0">3</div>
                   <div>
-                    <h4 className="font-bold text-blue-900">Onboarding</h4>
-                    <p className="text-sm text-blue-700">Welcome to the team! You'll be assigned a mentor and a project.</p>
+                    <h4 className="font-bold text-slate-900">Onboarding</h4>
+                    <p className="text-sm text-slate-600">Welcome to the team! You'll be assigned a mentor and a project.</p>
                   </div>
                 </div>
               </div>
@@ -197,9 +197,10 @@ export default function InternshipDetails() {
           <div className="lg:col-span-1">
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="bg-white rounded-3xl p-8 shadow-2xl border border-slate-100 sticky top-28"
+              className="bg-white rounded-3xl p-8 shadow-xl border border-slate-100 sticky top-28"
             >
               <h2 className="text-2xl font-bold text-slate-900 mb-6">Apply Now</h2>
               
@@ -207,15 +208,15 @@ export default function InternshipDetails() {
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-green-50 text-green-700 p-6 rounded-2xl text-center"
+                  className="bg-green-50 text-green-600 p-6 rounded-2xl text-center border border-green-100"
                 >
-                  <CheckCircle2 className="mx-auto mb-4 text-green-500" size={48} />
+                  <CheckCircle2 className="mx-auto mb-4 text-green-600" size={48} />
                   <h3 className="text-xl font-bold mb-2">Application Sent!</h3>
                   <p className="text-sm">We've received your application. Our team will get back to you within 48 hours.</p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
+                <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="md:col-span-2">
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
                     <input 
                       type="text" 
@@ -223,10 +224,10 @@ export default function InternshipDetails() {
                       value={formState.name}
                       onChange={(e) => setFormState({...formState, name: e.target.value})}
                       placeholder="John Doe"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
                     />
                   </div>
-                  <div>
+                  <div className="md:col-span-2">
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
                     <input 
                       type="email" 
@@ -234,24 +235,24 @@ export default function InternshipDetails() {
                       value={formState.email}
                       onChange={(e) => setFormState({...formState, email: e.target.value})}
                       placeholder="john@example.com"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
                     />
                   </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">Location (India)</label>
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">Location (State)</label>
                     <select 
                       required
                       value={formState.location}
                       onChange={(e) => setFormState({...formState, location: e.target.value})}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none bg-white"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
                     >
-                      <option value="">Select Location</option>
+                      <option value="">Select State</option>
                       {indianStates.map(state => (
                         <option key={state} value={state}>{state}</option>
                       ))}
                     </select>
                   </div>
-                  <div>
+                  <div className="md:col-span-2">
                     <label className="block text-sm font-semibold text-slate-700 mb-2">College Name</label>
                     <input 
                       type="text" 
@@ -259,69 +260,66 @@ export default function InternshipDetails() {
                       value={formState.college}
                       onChange={(e) => setFormState({...formState, college: e.target.value})}
                       placeholder="Your College Name"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
                     />
                   </div>
-                  <div>
+                  <div className="md:col-span-2">
                     <label className="block text-sm font-semibold text-slate-700 mb-2">Preferred Domain</label>
                     <select 
                       required
                       value={formState.domain}
                       onChange={(e) => setFormState({...formState, domain: e.target.value})}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all appearance-none bg-white"
+                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
                     >
                       <option value="">Select a domain</option>
-                      <option value="all">All Domains (Exploratory)</option>
-                      <option value="web">Web Development</option>
-                      <option value="ai">AI & Machine Learning</option>
-                      <option value="data-analyst">Data Analyst</option>
-                      <option value="data-science">Data Science</option>
-                      <option value="cyber">Cyber Security</option>
-                      <option value="rd">Research & Development</option>
-                      <option value="patent">Patent & Innovation</option>
+                      <option value="Web Development">Web Development</option>
+                      <option value="AI & Machine Learning">AI & Machine Learning</option>
+                      <option value="Data Analyst">Data Analyst</option>
+                      <option value="Data Science">Data Science</option>
+                      <option value="Cyber Security">Cyber Security</option>
+                      <option value="Patent & Research">Patent & Research</option>
                     </select>
                   </div>
-                  <div>
-                    <label className="block text-sm font-semibold text-slate-700 mb-2">Upload Resume link (PDF)</label>
+                  <div className="md:col-span-2">
+                    <label className="block text-sm font-semibold text-slate-700 mb-2">Resume Link (Google Drive/LinkedIn)</label>
                     <div className="relative">
+                      <FileText className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                       <input 
                         type="url" 
                         required
                         value={formState.resumeLink}
                         onChange={(e) => setFormState({...formState, resumeLink: e.target.value})}
-                        placeholder="https://drive.google.com/your-resume-link"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                        placeholder="https://drive.google.com/..."
+                        className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
                       />
-                      <div className="mt-1 text-[10px] text-slate-400 flex items-center gap-1">
-                        <FileText size={12} />
-                        <span>Provide a link to your PDF resume (Google Drive/Dropbox)</span>
-                      </div>
                     </div>
                   </div>
-                  <button 
-                    type="submit"
-                    disabled={loading}
-                    className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-all shadow-lg shadow-blue-100 flex items-center justify-center gap-2"
-                  >
-                    {loading ? (
-                      <>
-                        <Loader2 className="animate-spin" size={18} />
-                        Submitting...
-                      </>
-                    ) : (
-                      <>
-                        Submit Application <Send size={18} />
-                      </>
-                    )}
-                  </button>
+                  <div className="md:col-span-2 pt-4">
+                    <button 
+                      type="submit"
+                      disabled={loading}
+                      className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed transition-all shadow-lg shadow-blue-100 flex items-center justify-center gap-2"
+                    >
+                      {loading ? (
+                        <>
+                          <Loader2 className="animate-spin" size={18} />
+                          Submitting...
+                        </>
+                      ) : (
+                        <>
+                          Submit Application <Send size={18} />
+                        </>
+                      )}
+                    </button>
+                  </div>
 
                   {error && (
-                    <div className="flex items-center gap-2 text-rose-600 text-xs mt-2 bg-rose-50 p-3 rounded-lg">
+                    <div className="flex items-center gap-2 text-rose-600 text-xs mt-2 bg-rose-50 p-3 rounded-lg border border-rose-100">
                       <AlertCircle size={14} />
                       <span>{error}</span>
                     </div>
                   )}
-                  <p className="text-[10px] text-slate-400 text-center">
+                  <p className="text-[10px] text-slate-500 text-center">
                     By submitting, you agree to our terms and conditions regarding the internship program.
                   </p>
                 </form>

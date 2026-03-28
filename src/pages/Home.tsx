@@ -1,20 +1,20 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { ArrowRight, CheckCircle2, Award, Users, Rocket, Code, Brain, Database, Shield, Microscope, Lightbulb, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Award, Users, Rocket, Code, Brain, Database, Shield, Microscope, Lightbulb, ChevronLeft, ChevronRight, BarChart3 } from 'lucide-react';
 
 const carouselImages = [
-  "https://res.cloudinary.com/dodhvvewu/image/upload/v1774207478/892863fa-0496-4d7f-9158-c9207418d150_uphi2c.png",
-  "https://res.cloudinary.com/dodhvvewu/image/upload/v1774207448/654052281_914616747865242_7210948664801015668_n_wa6r77.png"
+  "https://res.cloudinary.com/dbjjili1c/image/upload/v1774683108/2545d3c3-7656-417b-a950-44a725964121_zplmfo.jpg",
+  "https://res.cloudinary.com/dbjjili1c/image/upload/v1774683414/1ffe11d0-341e-4d77-9e19-8cb8f0949922_xu6mru.jpg"
 ];
 
 const domains = [
   { name: 'Web Development', icon: Code, color: 'blue' },
   { name: 'AI & ML', icon: Brain, color: 'indigo' },
+  { name: 'Data Analyst', icon: BarChart3, color: 'emerald' },
   { name: 'Data Science', icon: Database, color: 'cyan' },
   { name: 'Cyber Security', icon: Shield, color: 'red' },
-  { name: 'R & D', icon: Microscope, color: 'purple' },
-  { name: 'Innovation', icon: Lightbulb, color: 'amber' },
+  { name: 'Patent & Research', icon: Microscope, color: 'purple' },
 ];
 
 const testimonials = [
@@ -52,36 +52,45 @@ export default function Home() {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
 
   return (
-    <div className="pt-20">
+    <div className="pt-20 bg-white">
       {/* Hero Section */}
-      <section className="relative overflow-hidden py-12 lg:py-24 bg-slate-50">
+      <section className="relative overflow-hidden py-12 lg:py-24 bg-white">
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-blue-100 rounded-full blur-3xl opacity-50"></div>
-          <div className="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] bg-indigo-100 rounded-full blur-3xl opacity-50"></div>
+          <div className="absolute top-[-10%] right-[-5%] w-[40%] h-[40%] bg-blue-50 rounded-full blur-[120px] opacity-50"></div>
+          <div className="absolute bottom-[-10%] left-[-5%] w-[40%] h-[40%] bg-indigo-50 rounded-full blur-[120px] opacity-50"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="text-left"
             >
-              <span className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest text-blue-600 uppercase bg-blue-50 rounded-full border border-blue-100">
-                Future-Ready Internships
-              </span>
+              <motion.span 
+                initial={{ opacity: 0, y: -10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="inline-block px-4 py-1.5 mb-6 text-xs font-semibold tracking-widest text-blue-600 uppercase bg-blue-50 rounded-full border border-blue-100"
+              >
+                Aarivya Interns Batch 2026
+              </motion.span>
               <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 mb-6 leading-tight">
-                Bridging Learning with <span className="text-blue-600">Real-World</span> Experience
+                Empowering Innovation for <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">Batch 2026</span>
               </h1>
-              <p className="text-lg text-slate-600 mb-10 leading-relaxed">
-                Aarivya Labs provides students with high-impact internships in cutting-edge domains. 
-                Gain practical skills, work on live projects, and get mentored by industry experts.
+              <p className="text-lg text-slate-600 mb-4 leading-relaxed">
+                Aarivya Interns Batch 2026 powered by <span className="font-bold text-slate-900">H&P Projects & NextGenCare Foundation</span>.
+              </p>
+              <p className="text-slate-500 mb-10 leading-relaxed">
+                A unified platform for innovation, development, patents, and research. 
+                Open for students from all colleges and branches to participate in real-world projects.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-start gap-4">
                 <Link
                   to="/internship"
-                  className="w-full sm:w-auto bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-all shadow-xl shadow-blue-200 flex items-center justify-center gap-2 group"
+                  className="w-full sm:w-auto bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-all shadow-xl shadow-blue-100 flex items-center justify-center gap-2 group"
                 >
                   Apply for Internship <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -96,20 +105,21 @@ export default function Home() {
 
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="relative group"
             >
-              <div className="aspect-[4/3] md:aspect-video bg-white rounded-3xl overflow-hidden shadow-2xl border-4 border-white relative">
+              <div className="aspect-[4/3] md:aspect-video bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-100 relative">
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={currentSlide}
                     src={carouselImages[currentSlide]}
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
+                    initial={{ opacity: 0, scale: 1.1 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
                     transition={{ duration: 0.5 }}
-                    className="w-full h-full object-contain bg-slate-50"
+                    className="w-full h-full object-contain p-4 bg-white"
                     referrerPolicy="no-referrer"
                   />
                 </AnimatePresence>
@@ -117,13 +127,13 @@ export default function Home() {
                 {/* Carousel Controls */}
                 <button 
                   onClick={prevSlide}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm p-2 rounded-full text-slate-900 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 backdrop-blur-sm p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/80"
                 >
                   <ChevronLeft size={24} />
                 </button>
                 <button 
                   onClick={nextSlide}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 backdrop-blur-sm p-2 rounded-full text-slate-900 opacity-0 group-hover:opacity-100 transition-opacity hover:bg-white"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 backdrop-blur-sm p-2 rounded-full text-white opacity-0 group-hover:opacity-100 transition-opacity hover:bg-black/80"
                 >
                   <ChevronRight size={24} />
                 </button>
@@ -134,22 +144,75 @@ export default function Home() {
                     <button
                       key={i}
                       onClick={() => setCurrentSlide(i)}
-                      className={`w-2 h-2 rounded-full transition-all ${currentSlide === i ? 'w-8 bg-blue-600' : 'bg-white/50 hover:bg-white'}`}
+                      className={`w-2 h-2 rounded-full transition-all ${currentSlide === i ? 'w-8 bg-blue-500' : 'bg-white/20 hover:bg-white/50'}`}
                     />
                   ))}
                 </div>
               </div>
-              
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-600/10 rounded-full blur-2xl -z-10"></div>
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-indigo-600/10 rounded-full blur-2xl -z-10"></div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{ y: -5 }}
+              className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm"
+            >
+              <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6">
+                <Rocket size={24} />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-4">Unified Domains</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Web Development, AI & ML, Data Analyst, Data Science, Cyber Security – all integrated into one platform with real-world projects.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              whileHover={{ y: -5 }}
+              className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm"
+            >
+              <div className="w-12 h-12 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center mb-6">
+                <Lightbulb size={24} />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-4">Patent & Research</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Includes patent development, research paper writing, publication support, and innovation-driven project execution.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              whileHover={{ y: -5 }}
+              className="p-8 rounded-3xl bg-white border border-slate-100 shadow-sm"
+            >
+              <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center mb-6">
+                <Users size={24} />
+              </div>
+              <h3 className="text-xl font-bold text-slate-900 mb-4">Open for All</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                Students from all colleges and branches can apply and participate in this internship program.
+              </p>
             </motion.div>
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -168,52 +231,35 @@ export default function Home() {
                 Our mission is to empower the youth of India with practical skills in emerging technologies, fostering a culture of innovation, research, and professional excellence.
               </p>
               <div className="grid grid-cols-2 gap-6">
-                <div className="flex items-start gap-3">
-                  <div className="mt-1 bg-blue-100 p-1 rounded-full text-blue-600">
-                    <CheckCircle2 size={18} />
+                {[
+                  { text: "Industry Expert Mentors", icon: CheckCircle2 },
+                  { text: "Live Project Access", icon: CheckCircle2 },
+                  { text: "Global Certification", icon: CheckCircle2 },
+                  { text: "Career Guidance", icon: CheckCircle2 },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-start gap-3">
+                    <div className="mt-1 bg-blue-50 p-1 rounded-full text-blue-600">
+                      <item.icon size={18} />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-slate-900">{item.text}</h4>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-900">Industry Expert Mentors</h4>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="mt-1 bg-blue-100 p-1 rounded-full text-blue-600">
-                    <CheckCircle2 size={18} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-900">Live Project Access</h4>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="mt-1 bg-blue-100 p-1 rounded-full text-blue-600">
-                    <CheckCircle2 size={18} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-900">Global Certification</h4>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="mt-1 bg-blue-100 p-1 rounded-full text-blue-600">
-                    <CheckCircle2 size={18} />
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-900">Career Guidance</h4>
-                  </div>
-                </div>
+                ))}
               </div>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <div className="aspect-video bg-slate-100 rounded-3xl overflow-hidden shadow-2xl">
+              <div className="aspect-video bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
                 <img 
                   src="https://res.cloudinary.com/dodhvvewu/image/upload/v1774204184/e52195d5-0cde-4b5c-9c38-b9fdfbcd3dee_i4uwpf.png" 
                   alt="Engineering and Technology" 
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700"
                   referrerPolicy="no-referrer"
                 />
               </div>
@@ -223,13 +269,25 @@ export default function Home() {
       </section>
 
       {/* Domains Section */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Our Domains</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">
+            <motion.h2 
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl font-bold text-slate-900 mb-4"
+            >
+              Our Domains
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-slate-600 max-w-2xl mx-auto"
+            >
               Choose from our wide range of specialized internship programs designed to make you industry-ready.
-            </p>
+            </motion.p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -240,7 +298,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all group"
+                className="bg-white p-8 rounded-3xl shadow-xl border border-slate-100 hover:border-blue-500 transition-all group"
               >
                 <div className={`w-14 h-14 rounded-xl bg-${domain.color}-50 text-${domain.color}-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                   <domain.icon size={28} />
@@ -259,34 +317,39 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-white overflow-hidden">
+      <section className="py-20 bg-slate-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                <div className="p-6 bg-blue-50 rounded-2xl">
-                  <Award className="text-blue-600 mb-4" size={32} />
-                  <h4 className="font-bold text-slate-900 mb-2">Certification</h4>
-                  <p className="text-sm text-slate-600">Receive a globally recognized certificate upon successful completion.</p>
-                </div>
-                <div className="p-6 bg-indigo-50 rounded-2xl">
-                  <Rocket className="text-indigo-600 mb-4" size={32} />
-                  <h4 className="font-bold text-slate-900 mb-2">Live Projects</h4>
-                  <p className="text-sm text-slate-600">Work on actual industry projects that add value to your portfolio.</p>
-                </div>
-                <div className="p-6 bg-cyan-50 rounded-2xl">
-                  <Users className="text-cyan-600 mb-4" size={32} />
-                  <h4 className="font-bold text-slate-900 mb-2">Mentorship</h4>
-                  <p className="text-sm text-slate-600">Get 1-on-1 guidance from professionals working in top tech companies.</p>
-                </div>
-                <div className="p-6 bg-purple-50 rounded-2xl">
-                  <CheckCircle2 className="text-purple-600 mb-4" size={32} />
-                  <h4 className="font-bold text-slate-900 mb-2">Flexible</h4>
-                  <p className="text-sm text-slate-600">Self-paced learning with flexible schedules to balance your studies.</p>
-                </div>
+                {[
+                  { title: "Live Projects", icon: Rocket, color: "blue", desc: "Work on actual industry projects that add value to your portfolio." },
+                  { title: "Patent Support", icon: Lightbulb, color: "indigo", desc: "Guidance on patent development and intellectual property protection." },
+                  { title: "Research Guidance", icon: Microscope, color: "cyan", desc: "Support for research paper writing and publication in top journals." },
+                  { title: "Certification", icon: Award, color: "purple", desc: "Receive a globally recognized certificate upon completion." },
+                  { title: "Expert Mentorship", icon: Users, color: "amber", desc: "1-on-1 guidance from professionals working in top tech companies.", full: true },
+                ].map((benefit, i) => (
+                  <motion.div 
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className={`p-6 bg-white border border-slate-100 rounded-3xl ${benefit.full ? 'sm:col-span-2' : ''}`}
+                  >
+                    <benefit.icon className={`text-${benefit.color}-600 mb-4`} size={32} />
+                    <h4 className="font-bold text-slate-900 mb-2">{benefit.title}</h4>
+                    <p className="text-sm text-slate-600">{benefit.desc}</p>
+                  </motion.div>
+                ))}
               </div>
             </div>
-            <div className="order-1 lg:order-2">
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2"
+            >
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
                 Why Choose Aarivya Labs?
               </h2>
@@ -300,23 +363,30 @@ export default function Home() {
                   "Access to exclusive tech community",
                   "Letter of Recommendation for top performers"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-slate-700 font-medium">
-                    <CheckCircle2 className="text-green-500" size={20} />
+                  <motion.li 
+                    key={i}
+                    initial={{ opacity: 0, x: 20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="flex items-center gap-3 text-slate-700 font-medium"
+                  >
+                    <CheckCircle2 className="text-blue-600" size={20} />
                     {item}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">What Our Interns Say</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">What Our Interns Say</h2>
+            <p className="text-slate-600 max-w-2xl mx-auto">
               Hear from students who transformed their careers with Aarivya Labs.
             </p>
           </div>
@@ -329,18 +399,18 @@ export default function Home() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="bg-slate-800 p-8 rounded-2xl border border-slate-700"
+                className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm"
               >
-                <p className="text-slate-300 italic mb-8">"{t.content}"</p>
+                <p className="text-slate-600 italic mb-8">"{t.content}"</p>
                 <div className="flex items-center gap-4">
                   <img 
                     src={t.image} 
                     alt={t.name} 
-                    className="w-12 h-12 rounded-full object-cover"
+                    className="w-12 h-12 rounded-full object-cover border-2 border-slate-100"
                     referrerPolicy="no-referrer"
                   />
                   <div>
-                    <h4 className="font-bold">{t.name}</h4>
+                    <h4 className="font-bold text-slate-900">{t.name}</h4>
                     <p className="text-xs text-slate-500">{t.role}</p>
                   </div>
                 </div>
@@ -353,22 +423,27 @@ export default function Home() {
       {/* CTA Section */}
       <section className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-blue-600 rounded-3xl p-10 md:p-16 text-center text-white relative overflow-hidden shadow-2xl shadow-blue-200">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-blue-600 rounded-[3rem] p-10 md:p-16 text-center text-white relative overflow-hidden shadow-2xl shadow-blue-100"
+          >
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-400/20 rounded-full -ml-32 -mb-32 blur-3xl"></div>
             
             <h2 className="text-3xl md:text-5xl font-bold mb-6 relative z-10">Ready to Start Your Journey?</h2>
             <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto relative z-10">
               Join hundreds of students who are already building their future with Aarivya Labs. 
-              Applications for the next cohort are now open!
+              Applications for the Batch 2026 are now open!
             </p>
             <Link
               to="/internship"
-              className="inline-block bg-white text-blue-600 px-10 py-4 rounded-xl font-bold text-lg hover:bg-blue-50 transition-all relative z-10"
+              className="inline-block bg-white text-blue-600 px-10 py-4 rounded-2xl font-bold text-lg hover:bg-blue-50 transition-all relative z-10 shadow-xl"
             >
               Apply Now
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

@@ -15,7 +15,7 @@ const domains = [
     level: 'Beginner to Intermediate'
   },
   {
-    name: 'AI & Machine Learning',
+    name: 'AI & ML',
     icon: Brain,
     description: 'Explore the frontier of artificial intelligence. Gain hands-on experience with Python-based frameworks like TensorFlow and PyTorch. Learn to build, train, and optimize neural networks for computer vision, natural language processing, and predictive analytics.',
     skills: ['Deep Learning & Neural Nets', 'Computer Vision (OpenCV)', 'Natural Language Processing', 'Model Optimization & Tuning'],
@@ -59,34 +59,27 @@ const domains = [
     level: 'Intermediate'
   },
   {
-    name: 'Research & Development',
+    name: 'Patent & Research',
     icon: Microscope,
-    description: 'Be at the forefront of technological breakthroughs. Conduct literature reviews, design experiments, and build innovative prototypes. Learn the discipline of scientific research and technical documentation for emerging technologies.',
-    skills: ['Scientific Research Methods', 'Rapid Prototyping', 'Technical Paper Writing', 'Experimental Design'],
-    highlights: ['Publish a technical research paper', 'Develop a novel tech prototype', 'Collaborate on IP-focused projects', 'Present findings to industry experts'],
+    description: 'Bridge the gap between technology, innovation, and research. Includes patent development, research paper writing, publication support, and innovation-driven project execution. Learn to navigate intellectual property rights and scientific research methods.',
+    skills: ['Intellectual Property Strategy', 'Scientific Research Methods', 'Drafting Technical Claims', 'Technical Paper Writing'],
+    highlights: ['Draft a complete patent application', 'Publish a technical research paper', 'Conduct global prior-art searches', 'Collaborate on IP-focused projects'],
     color: 'bg-purple-50',
     iconColor: 'text-purple-600',
     duration: '4-6 Months',
     level: 'Advanced'
-  },
-  {
-    name: 'Patent & Innovation',
-    icon: Lightbulb,
-    description: 'Bridge the gap between technology and law. Understand the lifecycle of an invention, from ideation to legal protection. Learn how to conduct patent searches, draft technical claims, and navigate intellectual property rights.',
-    skills: ['Intellectual Property Strategy', 'Patent Search & Analysis', 'Drafting Technical Claims', 'Innovation Management'],
-    highlights: ['Draft a complete patent application', 'Conduct global prior-art searches', 'Analyze innovation market trends', 'Learn IP commercialization basics'],
-    color: 'bg-amber-50',
-    iconColor: 'text-amber-600',
-    duration: '2-3 Months',
-    level: 'Beginner to Intermediate'
   }
 ];
 
 export default function Domains() {
   return (
-    <div className="pt-24 pb-20">
-      <section className="py-16 bg-slate-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="pt-24 pb-20 bg-white min-h-screen">
+      <section className="py-16 bg-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+          <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] bg-blue-50 rounded-full blur-3xl opacity-50"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -111,7 +104,7 @@ export default function Domains() {
             >
               <Link
                 to="/internship?all=true"
-                className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-100"
+                className="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-700 transition-all shadow-xl shadow-blue-100"
               >
                 Express Interest in All Domains <ArrowRight size={20} />
               </Link>
@@ -126,23 +119,23 @@ export default function Domains() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white rounded-[2.5rem] p-8 border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-blue-900/5 transition-all group flex flex-col h-full relative overflow-hidden"
+                className="bg-white rounded-[2.5rem] p-8 border border-slate-100 shadow-xl hover:border-blue-500/50 transition-all group flex flex-col h-full relative overflow-hidden"
               >
                 <div className="flex justify-between items-start mb-6">
                   <div className={`w-16 h-16 rounded-2xl ${domain.color} ${domain.iconColor} flex items-center justify-center group-hover:scale-110 transition-transform`}>
                     <domain.icon size={32} />
                   </div>
                   <div className="flex flex-col items-end gap-1">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 bg-slate-50 px-2 py-1 rounded-md">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500 bg-slate-50 px-2 py-1 rounded-md border border-slate-100">
                       {domain.duration}
                     </span>
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-2 py-1 rounded-md">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-blue-600 bg-blue-50 px-2 py-1 rounded-md border border-blue-100">
                       {domain.level}
                     </span>
                   </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">{domain.name}</h3>
+                <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-blue-600 transition-colors">{domain.name}</h3>
                 <p className="text-slate-600 leading-relaxed mb-8 text-sm">
                   {domain.description}
                 </p>
@@ -175,7 +168,7 @@ export default function Domains() {
 
                 <Link
                   to="/internship"
-                  className="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-blue-600 transition-all group-hover:shadow-xl group-hover:shadow-blue-200"
+                  className="w-full bg-slate-50 text-slate-900 py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-blue-600 hover:text-white transition-all group-hover:shadow-xl group-hover:shadow-blue-100 border border-slate-100 hover:border-blue-500"
                 >
                   Apply for {domain.name} <ArrowRight size={18} />
                 </Link>

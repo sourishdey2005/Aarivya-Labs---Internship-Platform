@@ -19,8 +19,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="pt-24 pb-20">
-      <section className="py-16 bg-slate-50">
+    <div className="pt-24 pb-20 bg-white min-h-screen">
+      <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <motion.h1 
@@ -48,7 +48,7 @@ export default function Contact() {
               animate={{ opacity: 1, x: 0 }}
               className="space-y-8"
             >
-              <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+              <div className="bg-slate-50 p-8 rounded-3xl shadow-sm border border-slate-100">
                 <h2 className="text-2xl font-bold text-slate-900 mb-8">Contact Information</h2>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
@@ -58,7 +58,7 @@ export default function Contact() {
                     <div>
                       <h4 className="font-bold text-slate-900">Email Us</h4>
                       <p className="text-slate-600">contact@aarivyalabs.com</p>
-                      <p className="text-slate-600 text-sm">support@aarivyalabs.com</p>
+                      <p className="text-slate-500 text-sm">support@aarivyalabs.com</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -68,7 +68,7 @@ export default function Contact() {
                     <div>
                       <h4 className="font-bold text-slate-900">LinkedIn</h4>
                       <p className="text-slate-600">Aarivya Labs Official</p>
-                      <p className="text-slate-600 text-sm">Connect with our team</p>
+                      <p className="text-slate-500 text-sm">Connect with our team</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -78,7 +78,7 @@ export default function Contact() {
                     <div>
                       <h4 className="font-bold text-slate-900">Call Us</h4>
                       <p className="text-slate-600">+91 98765 43210</p>
-                      <p className="text-slate-600 text-sm">Mon-Fri, 10am - 6pm</p>
+                      <p className="text-slate-500 text-sm">Mon-Fri, 10am - 6pm</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -88,23 +88,23 @@ export default function Contact() {
                     <div>
                       <h4 className="font-bold text-slate-900">Our Location</h4>
                       <p className="text-slate-600">Tech Park, Sector 62, Noida</p>
-                      <p className="text-slate-600 text-sm">Uttar Pradesh, India - 201309</p>
+                      <p className="text-slate-500 text-sm">Uttar Pradesh, India - 201309</p>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-slate-900 text-white p-8 rounded-3xl shadow-xl relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/20 rounded-full -mr-16 -mt-16 blur-2xl"></div>
+              <div className="bg-blue-600 text-white p-8 rounded-3xl shadow-xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-16 -mt-16 blur-2xl"></div>
                 <h3 className="text-xl font-bold mb-4 relative z-10">Join Our Community</h3>
-                <p className="text-slate-400 text-sm mb-6 relative z-10">
+                <p className="text-blue-100 text-sm mb-6 relative z-10">
                   Follow us on social media to stay updated with the latest tech trends and internship openings.
                 </p>
                 <div className="flex gap-4 relative z-10">
-                  <a href="#" className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+                  <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors">
                     <Linkedin size={20} />
                   </a>
-                  <a href="#" className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors">
+                  <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors">
                     <Mail size={20} />
                   </a>
                 </div>
@@ -123,7 +123,7 @@ export default function Contact() {
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-green-50 text-green-700 p-10 rounded-2xl text-center"
+                  className="bg-green-50 text-green-600 p-10 rounded-2xl text-center border border-green-100"
                 >
                   <CheckCircle2 className="mx-auto mb-4 text-green-500" size={64} />
                   <h3 className="text-2xl font-bold mb-2">Message Received!</h3>
@@ -140,7 +140,7 @@ export default function Contact() {
                         value={formState.name}
                         onChange={(e) => setFormState({...formState, name: e.target.value})}
                         placeholder="John Doe"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder:text-slate-400"
                       />
                     </div>
                     <div>
@@ -151,7 +151,7 @@ export default function Contact() {
                         value={formState.email}
                         onChange={(e) => setFormState({...formState, email: e.target.value})}
                         placeholder="john@example.com"
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder:text-slate-400"
                       />
                     </div>
                   </div>
@@ -163,7 +163,7 @@ export default function Contact() {
                       value={formState.subject}
                       onChange={(e) => setFormState({...formState, subject: e.target.value})}
                       placeholder="How can we help?"
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all placeholder:text-slate-400"
                     />
                   </div>
                   <div>
@@ -174,12 +174,12 @@ export default function Contact() {
                       value={formState.message}
                       onChange={(e) => setFormState({...formState, message: e.target.value})}
                       placeholder="Write your message here..."
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all resize-none placeholder:text-slate-400"
                     ></textarea>
                   </div>
                   <button 
                     type="submit"
-                    className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-100 flex items-center justify-center gap-2"
+                    className="w-full bg-blue-600 text-white py-4 rounded-xl font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/10 flex items-center justify-center gap-2"
                   >
                     Send Message <Send size={18} />
                   </button>
