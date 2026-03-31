@@ -38,7 +38,10 @@ export default function InternshipDetails() {
       const data = await response.json();
 
       if (data.result === 'success') {
-        setTrackStatus(data.status);
+        // Normalize status: trim and capitalize first letter of each word
+        const rawStatus = data.status || 'Pending';
+        const normalizedStatus = rawStatus.trim().toLowerCase().split(' ').map((word: string) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+        setTrackStatus(normalizedStatus);
       } else {
         setTrackError(data.message || 'Application not found.');
       }
@@ -276,9 +279,9 @@ export default function InternshipDetails() {
                 >
                   <p className="text-slate-500 text-sm uppercase font-bold tracking-widest mb-2">Current Status</p>
                   <div className={`text-3xl font-black mb-4 ${
-                    trackStatus === 'Accepted' ? 'text-emerald-600' :
-                    trackStatus === 'Rejected' ? 'text-rose-600' :
-                    trackStatus === 'Under Review' ? 'text-amber-600' :
+                    trackStatus.includes('Accepted') ? 'text-emerald-600' :
+                    trackStatus.includes('Rejected') ? 'text-rose-600' :
+                    trackStatus.includes('Review') ? 'text-amber-600' :
                     'text-blue-600'
                   }`}>
                     {trackStatus}
@@ -288,7 +291,7 @@ export default function InternshipDetails() {
                       <div 
                         key={step}
                         className={`h-1.5 w-12 rounded-full ${
-                          trackStatus === step ? (
+                          (trackStatus === step || (step === 'Under Review' && trackStatus.includes('Review'))) ? (
                             step === 'Accepted' ? 'bg-emerald-500' :
                             step === 'Rejected' ? 'bg-rose-500' :
                             step === 'Under Review' ? 'bg-amber-500' :
@@ -299,10 +302,11 @@ export default function InternshipDetails() {
                     ))}
                   </div>
                   <p className="mt-6 text-slate-600 text-sm">
-                    {trackStatus === 'Pending' && "Your application has been received and is waiting for initial screening."}
-                    {trackStatus === 'Under Review' && "Our team is currently evaluating your profile and technical skills."}
-                    {trackStatus === 'Accepted' && "Congratulations! You have been selected for the internship. Check your email for onboarding details."}
-                    {trackStatus === 'Rejected' && "Thank you for your interest. Unfortunately, we cannot proceed with your application at this time."}
+                    {trackStatus.includes('Pending') && "Your application has been received and is waiting for initial screening."}
+                    {trackStatus.includes('Review') && "Our team is currently evaluating your profile and technical skills."}
+                    {trackStatus.includes('Accepted') && "Congratulations! You have been selected for the internship. Check your email for onboarding details."}
+                    {trackStatus.includes('Rejected') && "Thank you for your interest. Unfortunately, we cannot proceed with your application at this time."}
+                    {(!trackStatus.includes('Pending') && !trackStatus.includes('Review') && !trackStatus.includes('Accepted') && !trackStatus.includes('Rejected')) && "Your application is being processed. Please check back later for updates."}
                   </p>
                 </motion.div>
               )}
