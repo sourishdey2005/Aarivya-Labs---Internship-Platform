@@ -9,6 +9,11 @@ const domains = [
     description: 'Master the art of building scalable web applications. From crafting intuitive user interfaces with React and Tailwind CSS to developing robust server-side logic with Node.js and Express. You will learn the full development lifecycle, including database integration and cloud deployment.',
     skills: ['Full-Stack React & Node.js', 'Responsive UI/UX Design', 'RESTful API Development', 'Cloud Deployment (AWS/Vercel)'],
     highlights: ['Build a real-world E-commerce platform', 'Implement secure JWT authentication', 'Optimize web performance & SEO', 'Version control with Git/GitHub'],
+    whyChoose: {
+      paths: ['Full-Stack Developer', 'Front-End Engineer', 'Back-End Developer', 'UI/UX Developer'],
+      demand: 'High demand across all sectors as businesses shift to digital-first models.',
+      opportunities: 'Remote work, freelance projects, and roles in top tech firms.'
+    },
     color: 'bg-blue-50',
     iconColor: 'text-blue-600',
     duration: '2-3 Months',
@@ -20,6 +25,11 @@ const domains = [
     description: 'Explore the frontier of artificial intelligence. Gain hands-on experience with Python-based frameworks like TensorFlow and PyTorch. Learn to build, train, and optimize neural networks for computer vision, natural language processing, and predictive analytics.',
     skills: ['Deep Learning & Neural Nets', 'Computer Vision (OpenCV)', 'Natural Language Processing', 'Model Optimization & Tuning'],
     highlights: ['Develop an Image Recognition system', 'Build a Sentiment Analysis tool', 'Deploy models using Flask/FastAPI', 'Work with large-scale datasets'],
+    whyChoose: {
+      paths: ['Machine Learning Engineer', 'AI Researcher', 'Data Scientist', 'Robotics Engineer'],
+      demand: 'Rapidly growing field with applications in healthcare, finance, and autonomous systems.',
+      opportunities: 'Leading innovation in automation and intelligent decision-making systems.'
+    },
     color: 'bg-indigo-50',
     iconColor: 'text-indigo-600',
     duration: '3 Months',
@@ -31,6 +41,11 @@ const domains = [
     description: 'Transform raw data into actionable business insights. Learn advanced SQL for data extraction, use Python for data manipulation, and master visualization tools like Tableau or PowerBI. Focus on statistical methods and trend analysis.',
     skills: ['Advanced SQL Querying', 'Data Visualization (Tableau)', 'Statistical Hypothesis Testing', 'Business Intelligence Reporting'],
     highlights: ['Create interactive executive dashboards', 'Perform market trend analysis', 'Automate data cleaning pipelines', 'Present data-driven business strategies'],
+    whyChoose: {
+      paths: ['Business Analyst', 'Data Visualization Expert', 'Operations Analyst', 'Market Researcher'],
+      demand: 'Essential for data-driven decision-making in retail, finance, and marketing.',
+      opportunities: 'Transition into strategic leadership roles by mastering data storytelling.'
+    },
     color: 'bg-emerald-50',
     iconColor: 'text-emerald-600',
     duration: '2 Months',
@@ -42,6 +57,11 @@ const domains = [
     description: 'The intersection of statistics, programming, and domain expertise. Dive deep into complex datasets using big data technologies. Learn to build sophisticated predictive models and communicate complex findings through data storytelling.',
     skills: ['Predictive Modeling (Scikit-learn)', 'Big Data Processing (Spark)', 'Exploratory Data Analysis', 'Data Storytelling & Reporting'],
     highlights: ['Build a recommendation engine', 'Implement time-series forecasting', 'Handle unstructured data at scale', 'A/B testing and experimentation'],
+    whyChoose: {
+      paths: ['Data Scientist', 'Data Architect', 'Quantitative Analyst', 'Statistician'],
+      demand: 'High demand for professionals who can extract value from big data.',
+      opportunities: 'Work on cutting-edge predictive models and large-scale data systems.'
+    },
     color: 'bg-cyan-50',
     iconColor: 'text-cyan-600',
     duration: '3-4 Months',
@@ -53,6 +73,11 @@ const domains = [
     description: 'Protect the digital world from evolving threats. Learn the fundamentals of ethical hacking, penetration testing, and network defense. Understand cryptography, secure coding practices, and risk assessment frameworks.',
     skills: ['Ethical Hacking & Pen Testing', 'Network Security Protocols', 'Cryptography Fundamentals', 'Incident Response Planning'],
     highlights: ['Conduct vulnerability assessments', 'Simulate real-world cyber attacks', 'Implement secure network architectures', 'Learn digital forensics basics'],
+    whyChoose: {
+      paths: ['Security Analyst', 'Penetration Tester', 'Security Consultant', 'CISO'],
+      demand: 'Critical demand due to increasing cyber threats and data privacy regulations.',
+      opportunities: 'High-stakes roles protecting sensitive infrastructure and corporate data.'
+    },
     color: 'bg-rose-50',
     iconColor: 'text-rose-600',
     duration: '3 Months',
@@ -64,6 +89,11 @@ const domains = [
     description: 'Bridge the gap between technology, innovation, and research. Includes patent development, research paper writing, publication support, and innovation-driven project execution. Learn to navigate intellectual property rights and scientific research methods.',
     skills: ['Intellectual Property Strategy', 'Scientific Research Methods', 'Drafting Technical Claims', 'Technical Paper Writing'],
     highlights: ['Draft a complete patent application', 'Publish a technical research paper', 'Conduct global prior-art searches', 'Collaborate on IP-focused projects'],
+    whyChoose: {
+      paths: ['Patent Agent', 'Research Scientist', 'IP Consultant', 'Innovation Manager'],
+      demand: 'Growing need for protecting intellectual property in a competitive global market.',
+      opportunities: 'Influence the future of technology by securing legal protection for new inventions.'
+    },
     color: 'bg-purple-50',
     iconColor: 'text-purple-600',
     duration: '4-6 Months',
@@ -163,6 +193,30 @@ export default function Domains() {
                         </li>
                       ))}
                     </ul>
+                  </div>
+
+                  <div className="pt-6 border-t border-slate-50">
+                    <h4 className="text-[11px] font-bold text-blue-600 uppercase tracking-[0.2em] mb-4">Why Choose This Domain?</h4>
+                    <div className="space-y-4">
+                      <div>
+                        <p className="text-[10px] font-bold text-slate-400 uppercase mb-2">Career Paths</p>
+                        <div className="flex flex-wrap gap-2">
+                          {domain.whyChoose.paths.map((path, i) => (
+                            <span key={i} className="text-[10px] bg-slate-50 text-slate-600 px-2 py-1 rounded-md border border-slate-100">
+                              {path}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold text-slate-400 uppercase mb-1">Industry Demand</p>
+                        <p className="text-xs text-slate-600 leading-relaxed">{domain.whyChoose.demand}</p>
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-bold text-slate-400 uppercase mb-1">Future Opportunities</p>
+                        <p className="text-xs text-slate-600 leading-relaxed">{domain.whyChoose.opportunities}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
 

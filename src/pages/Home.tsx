@@ -21,20 +21,42 @@ const testimonials = [
   {
     name: "Rahul Sharma",
     role: "Web Dev Intern",
-    content: "The mentorship at Aarivya Labs was exceptional. I worked on a real-world project that is now live!",
-    image: "https://picsum.photos/seed/rahul/100/100"
+    content: "The mentorship at Aarivya Labs was exceptional. I worked on a real-world project that is now live!"
   },
   {
     name: "Priya Patel",
     role: "Data Science Intern",
-    content: "Learned more in 2 months here than in a year of college. The focus on practical skills is amazing.",
-    image: "https://picsum.photos/seed/priya/100/100"
+    content: "Learned more in 2 months here than in a year of college. The focus on practical skills is amazing."
   },
   {
     name: "Ankit Verma",
     role: "AI/ML Intern",
-    content: "Challenging projects and a very supportive environment. Highly recommend for any tech student.",
-    image: "https://picsum.photos/seed/ankit/100/100"
+    content: "Challenging projects and a very supportive environment. Highly recommend for any tech student."
+  },
+  {
+    name: "Sneha Gupta",
+    role: "Cyber Security Intern",
+    content: "The hands-on experience with real-world projects at Aarivya Labs was a game-changer for my career."
+  },
+  {
+    name: "Vikram Singh",
+    role: "R&D Intern",
+    content: "Mentorship from industry experts helped me understand the practical applications of AI and ML."
+  },
+  {
+    name: "Neha Reddy",
+    role: "Data Analyst Intern",
+    content: "Aarivya Labs provides a perfect environment for innovation and research. Highly recommended!"
+  },
+  {
+    name: "Arjun Mehra",
+    role: "Web Dev Intern",
+    content: "The certification and letter of recommendation helped me land my first job in a top tech firm."
+  },
+  {
+    name: "Kavita Iyer",
+    role: "Patent Research Intern",
+    content: "Working on patent development was an eye-opening experience. I learned so much about IP."
   }
 ];
 
@@ -137,17 +159,6 @@ export default function Home() {
                 >
                   <ChevronRight size={24} />
                 </button>
-
-                {/* Indicators */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-                  {carouselImages.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setCurrentSlide(i)}
-                      className={`w-2 h-2 rounded-full transition-all ${currentSlide === i ? 'w-8 bg-blue-500' : 'bg-white/20 hover:bg-white/50'}`}
-                    />
-                  ))}
-                </div>
               </div>
             </motion.div>
           </div>
@@ -338,6 +349,21 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Domain Banner */}
+      <div className="bg-slate-900 py-4 overflow-hidden whitespace-nowrap relative border-y border-slate-800">
+        <div className="flex animate-marquee-slow">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="flex items-center gap-16 px-8">
+              {domains.map((domain) => (
+                <span key={domain.name} className="text-slate-400 font-bold text-sm uppercase tracking-[0.2em] flex items-center gap-3">
+                  <domain.icon size={16} className="text-blue-500" /> {domain.name}
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* Why Choose Us */}
       <section className="py-20 bg-slate-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -404,41 +430,45 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+      <section className="py-24 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
+          <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">What Our Interns Say</h2>
             <p className="text-slate-600 max-w-2xl mx-auto">
               Hear from students who transformed their careers with Aarivya Labs.
             </p>
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((t, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white p-8 rounded-3xl border border-slate-100 shadow-sm"
-              >
-                <p className="text-slate-600 italic mb-8">"{t.content}"</p>
-                <div className="flex items-center gap-4">
-                  <img 
-                    src={t.image} 
-                    alt={t.name} 
-                    className="w-12 h-12 rounded-full object-cover border-2 border-slate-100"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div>
-                    <h4 className="font-bold text-slate-900">{t.name}</h4>
-                    <p className="text-xs text-slate-500">{t.role}</p>
+        {/* Testimonial Ribbon */}
+        <div className="relative">
+          <div className="flex animate-marquee hover:[animation-play-state:paused] py-4">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex gap-8 px-4">
+                {testimonials.map((t, idx) => (
+                  <div
+                    key={`${i}-${idx}`}
+                    className="w-[350px] flex-shrink-0 bg-slate-50 p-8 rounded-3xl border border-slate-100 shadow-sm hover:shadow-md transition-all"
+                  >
+                    <p className="text-slate-600 italic mb-8 text-sm leading-relaxed">"{t.content}"</p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-sm">
+                        {t.name.charAt(0)}
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-slate-900 text-sm">{t.name}</h4>
+                        <p className="text-[10px] text-slate-500 uppercase tracking-wider font-semibold">{t.role}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
+                ))}
+              </div>
             ))}
           </div>
+          
+          {/* Gradient Overlays for smooth edges */}
+          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
         </div>
       </section>
 
