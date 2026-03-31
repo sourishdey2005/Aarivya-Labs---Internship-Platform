@@ -1,6 +1,6 @@
 import { useState, FormEvent } from 'react';
 import { motion } from 'motion/react';
-import { Clock, Award, Users, Calendar, CheckCircle2, FileText, Send, Loader2, AlertCircle } from 'lucide-react';
+import { Clock, Award, Users, Calendar, CheckCircle2, FileText, Send, Loader2, AlertCircle, Search } from 'lucide-react';
 
 export default function InternshipDetails() {
   const [formState, setFormState] = useState({
@@ -14,6 +14,41 @@ export default function InternshipDetails() {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [trackEmail, setTrackEmail] = useState('');
+  const [trackStatus, setTrackStatus] = useState<string | null>(null);
+  const [trackLoading, setTrackLoading] = useState(false);
+  const [trackError, setTrackError] = useState<string | null>(null);
+
+  const handleTrackStatus = async (e: FormEvent) => {
+    e.preventDefault();
+    setTrackLoading(true);
+    setTrackError(null);
+    setTrackStatus(null);
+
+    const scriptUrl = import.meta.env.VITE_GOOGLE_SHEETS_URL;
+
+    if (!scriptUrl) {
+      setTrackError('System Configuration Error: Google Sheets URL is missing.');
+      setTrackLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch(`${scriptUrl}?email=${encodeURIComponent(trackEmail)}`);
+      const data = await response.json();
+
+      if (data.result === 'success') {
+        setTrackStatus(data.status);
+      } else {
+        setTrackError(data.message || 'Application not found.');
+      }
+    } catch (err) {
+      console.error('Tracking error:', err);
+      setTrackError('Failed to fetch status. Please try again later.');
+    } finally {
+      setTrackLoading(false);
+    }
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -191,6 +226,87 @@ export default function InternshipDetails() {
                 </div>
               </div>
             </div>
+
+            {/* Track Application Status */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white rounded-3xl p-8 md:p-10 shadow-xl border border-slate-100"
+            >
+              <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-3">
+                <Search className="text-blue-600" /> Track Application Status
+              </h2>
+              <p className="text-slate-600 mb-8 text-sm">
+                Enter the email address you used during application to check your current status.
+              </p>
+              
+              <form onSubmit={handleTrackStatus} className="flex flex-col md:flex-row gap-4">
+                <div className="flex-grow">
+                  <input 
+                    type="email" 
+                    required
+                    value={trackEmail}
+                    onChange={(e) => setTrackEmail(e.target.value)}
+                    placeholder="your.email@example.com"
+                    className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-blue-500 outline-none transition-all"
+                  />
+                </div>
+                <button 
+                  type="submit"
+                  disabled={trackLoading}
+                  className="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 disabled:bg-blue-400 transition-all flex items-center justify-center gap-2 whitespace-nowrap"
+                >
+                  {trackLoading ? <Loader2 className="animate-spin" size={18} /> : 'Check Status'}
+                </button>
+              </form>
+
+              {trackError && (
+                <div className="mt-6 p-4 bg-rose-50 text-rose-600 rounded-2xl border border-rose-100 text-sm flex items-center gap-2">
+                  <AlertCircle size={18} />
+                  {trackError}
+                </div>
+              )}
+
+              {trackStatus && (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="mt-8 p-8 rounded-3xl border border-slate-100 bg-slate-50 text-center"
+                >
+                  <p className="text-slate-500 text-sm uppercase font-bold tracking-widest mb-2">Current Status</p>
+                  <div className={`text-3xl font-black mb-4 ${
+                    trackStatus === 'Accepted' ? 'text-emerald-600' :
+                    trackStatus === 'Rejected' ? 'text-rose-600' :
+                    trackStatus === 'Under Review' ? 'text-amber-600' :
+                    'text-blue-600'
+                  }`}>
+                    {trackStatus}
+                  </div>
+                  <div className="flex justify-center gap-2">
+                    {['Pending', 'Under Review', 'Accepted', 'Rejected'].map((step) => (
+                      <div 
+                        key={step}
+                        className={`h-1.5 w-12 rounded-full ${
+                          trackStatus === step ? (
+                            step === 'Accepted' ? 'bg-emerald-500' :
+                            step === 'Rejected' ? 'bg-rose-500' :
+                            step === 'Under Review' ? 'bg-amber-500' :
+                            'bg-blue-500'
+                          ) : 'bg-slate-200'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <p className="mt-6 text-slate-600 text-sm">
+                    {trackStatus === 'Pending' && "Your application has been received and is waiting for initial screening."}
+                    {trackStatus === 'Under Review' && "Our team is currently evaluating your profile and technical skills."}
+                    {trackStatus === 'Accepted' && "Congratulations! You have been selected for the internship. Check your email for onboarding details."}
+                    {trackStatus === 'Rejected' && "Thank you for your interest. Unfortunately, we cannot proceed with your application at this time."}
+                  </p>
+                </motion.div>
+              )}
+            </motion.div>
           </div>
 
           {/* Form Column */}
