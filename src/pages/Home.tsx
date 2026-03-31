@@ -165,9 +165,28 @@ export default function Home() {
         </div>
       </section>
       
-
-      {/* Features Section */}
-      <section className="py-20 bg-white">
+      {/* Scrolling Banner */}
+      <div className="my-8 bg-blue-600 py-4 overflow-hidden whitespace-nowrap relative shadow-lg">
+        <div className="flex animate-marquee">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="flex items-center gap-12 px-6">
+              <span className="text-white font-bold text-sm uppercase tracking-widest flex items-center gap-3">
+                <Rocket size={16} /> Applications Open for Batch 2026
+              </span>
+              <span className="text-blue-100 font-medium text-sm uppercase tracking-widest flex items-center gap-3">
+                <CheckCircle2 size={16} /> Powered by H&P Projects
+              </span>
+              <span className="text-white font-bold text-sm uppercase tracking-widest flex items-center gap-3">
+                <Award size={16} /> Research & Patent Support
+              </span>
+              <span className="text-blue-100 font-medium text-sm uppercase tracking-widest flex items-center gap-3">
+                <Users size={16} /> Open for All Branches
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <section className="py-24 bg-slate-50 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div 
@@ -224,7 +243,7 @@ export default function Home() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 bg-slate-50">
+      <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -281,7 +300,7 @@ export default function Home() {
       </section>
 
       {/* Domains Section */}
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <motion.h2 
@@ -344,7 +363,7 @@ export default function Home() {
       </div>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-slate-50 overflow-hidden">
+      <section className="py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="order-2 lg:order-1">
