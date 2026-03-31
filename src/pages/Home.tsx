@@ -165,27 +165,6 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Scrolling Banner */}
-      <div className="bg-blue-600 py-3 overflow-hidden whitespace-nowrap relative border-y border-blue-500/30">
-        <div className="flex animate-marquee">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="flex items-center gap-12 px-6">
-              <span className="text-white font-bold text-sm uppercase tracking-widest flex items-center gap-3">
-                <Rocket size={16} /> Applications Open for Batch 2026
-              </span>
-              <span className="text-blue-100 font-medium text-sm uppercase tracking-widest flex items-center gap-3">
-                <CheckCircle2 size={16} /> Powered by H&P Projects
-              </span>
-              <span className="text-white font-bold text-sm uppercase tracking-widest flex items-center gap-3">
-                <Award size={16} /> Research & Patent Support
-              </span>
-              <span className="text-blue-100 font-medium text-sm uppercase tracking-widest flex items-center gap-3">
-                <Users size={16} /> Open for All Branches
-              </span>
-            </div>
-          ))}
-        </div>
-      </div>
 
       {/* Features Section */}
       <section className="py-20 bg-white">
