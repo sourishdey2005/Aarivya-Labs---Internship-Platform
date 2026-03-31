@@ -43,33 +43,33 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center space-x-3">
-            <div className="flex items-center gap-2">
+          <div className="flex items-center space-x-3">
+            <Link to="/" className="flex items-center gap-3">
               <img 
                 src="https://res.cloudinary.com/dodhvvewu/image/upload/v1774203845/f04cf0dd-2df9-47fc-a367-de32c43af3e4_vyswxk.png" 
                 alt="Aarivya Labs Logo" 
                 className="w-10 h-10 object-contain"
                 referrerPolicy="no-referrer"
               />
-              <div className="w-px h-8 bg-slate-200 hidden sm:block"></div>
-              <a href="https://www.hnpprojects.com/" target="_blank" rel="noopener noreferrer">
-                <img 
-                  src="https://res.cloudinary.com/dbjjili1c/image/upload/v1774683108/2545d3c3-7656-417b-a950-44a725964121_zplmfo.jpg" 
-                  alt="H&P Projects Logo" 
-                  className="h-8 object-contain hidden sm:block hover:opacity-80 transition-opacity"
-                  referrerPolicy="no-referrer"
-                />
-              </a>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl font-bold tracking-tight text-slate-900 leading-none">
-                Aarivya <span className="text-blue-600">Labs</span>
-              </span>
-              <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter mt-1">
-                Batch 2026
-              </span>
-            </div>
-          </Link>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold tracking-tight text-slate-900 leading-none">
+                  Aarivya <span className="text-blue-600">Labs</span>
+                </span>
+                <span className="text-[10px] font-bold text-slate-500 uppercase tracking-tighter mt-1">
+                  Batch 2026
+                </span>
+              </div>
+            </Link>
+            <div className="w-px h-8 bg-slate-200 hidden sm:block"></div>
+            <a href="https://www.hnpprojects.com/" target="_blank" rel="noopener noreferrer" className="hidden sm:block">
+              <img 
+                src="https://res.cloudinary.com/dbjjili1c/image/upload/v1774683108/2545d3c3-7656-417b-a950-44a725964121_zplmfo.jpg" 
+                alt="H&P Projects Logo" 
+                className="h-8 object-contain hover:opacity-80 transition-opacity"
+                referrerPolicy="no-referrer"
+              />
+            </a>
+          </div>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
