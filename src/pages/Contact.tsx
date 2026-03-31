@@ -57,8 +57,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-900">Email Us</h4>
-                      <p className="text-slate-600">contact@aarivyalabs.com</p>
-                      <p className="text-slate-500 text-sm">support@aarivyalabs.com</p>
+                      <p className="text-slate-600">company@hnpprojects.com</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -67,7 +66,14 @@ export default function Contact() {
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-900">LinkedIn</h4>
-                      <p className="text-slate-600">Aarivya Labs Official</p>
+                      <a 
+                        href="https://www.linkedin.com/company/h-p-projects/?viewAsMember=true" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="text-slate-600 hover:text-blue-600 transition-colors"
+                      >
+                        H&P Projects Official
+                      </a>
                       <p className="text-slate-500 text-sm">Connect with our team</p>
                     </div>
                   </div>
@@ -77,7 +83,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-900">Call Us</h4>
-                      <p className="text-slate-600">+91 98765 43210</p>
+                      <p className="text-slate-600">9547300821 / 8984030821</p>
                       <p className="text-slate-500 text-sm">Mon-Fri, 10am - 6pm</p>
                     </div>
                   </div>
@@ -87,8 +93,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <h4 className="font-bold text-slate-900">Our Location</h4>
-                      <p className="text-slate-600">Tech Park, Sector 62, Noida</p>
-                      <p className="text-slate-500 text-sm">Uttar Pradesh, India - 201309</p>
+                      <p className="text-slate-600">Newtown, Kolkata</p>
                     </div>
                   </div>
                 </div>
@@ -101,10 +106,15 @@ export default function Contact() {
                   Follow us on social media to stay updated with the latest tech trends and internship openings.
                 </p>
                 <div className="flex gap-4 relative z-10">
-                  <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors">
+                  <a 
+                    href="https://www.linkedin.com/company/h-p-projects/?viewAsMember=true" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors"
+                  >
                     <Linkedin size={20} />
                   </a>
-                  <a href="#" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors">
+                  <a href="mailto:company@hnpprojects.com" className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors">
                     <Mail size={20} />
                   </a>
                 </div>

@@ -52,12 +52,14 @@ export default function Navbar() {
                 referrerPolicy="no-referrer"
               />
               <div className="w-px h-8 bg-slate-200 hidden sm:block"></div>
-              <img 
-                src="https://res.cloudinary.com/dbjjili1c/image/upload/v1774683108/2545d3c3-7656-417b-a950-44a725964121_zplmfo.jpg" 
-                alt="H&P Projects Logo" 
-                className="h-8 object-contain hidden sm:block"
-                referrerPolicy="no-referrer"
-              />
+              <a href="https://www.hnpprojects.com/" target="_blank" rel="noopener noreferrer">
+                <img 
+                  src="https://res.cloudinary.com/dbjjili1c/image/upload/v1774683108/2545d3c3-7656-417b-a950-44a725964121_zplmfo.jpg" 
+                  alt="H&P Projects Logo" 
+                  className="h-8 object-contain hidden sm:block hover:opacity-80 transition-opacity"
+                  referrerPolicy="no-referrer"
+                />
+              </a>
             </div>
             <div className="flex flex-col">
               <span className="text-xl font-bold tracking-tight text-slate-900 leading-none">

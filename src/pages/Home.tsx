@@ -81,7 +81,7 @@ export default function Home() {
                 Empowering Innovation for <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">Batch 2026</span>
               </h1>
               <p className="text-lg text-slate-600 mb-4 leading-relaxed">
-                Aarivya Interns Batch 2026 powered by <span className="font-bold text-slate-900">H&P Projects & NextGenCare Foundation</span>.
+                Aarivya Interns Batch 2026 powered by <a href="https://www.hnpprojects.com/" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-900 hover:text-blue-600 transition-colors underline decoration-blue-200 underline-offset-4">H&P Projects</a> & <span className="font-bold text-slate-900">NextGenCare Foundation</span>.
               </p>
               <p className="text-slate-500 mb-10 leading-relaxed">
                 A unified platform for innovation, development, patents, and research. 
@@ -153,6 +153,28 @@ export default function Home() {
           </div>
         </div>
       </section>
+      
+      {/* Scrolling Banner */}
+      <div className="bg-blue-600 py-3 overflow-hidden whitespace-nowrap relative border-y border-blue-500/30">
+        <div className="flex animate-marquee">
+          {[...Array(4)].map((_, i) => (
+            <div key={i} className="flex items-center gap-12 px-6">
+              <span className="text-white font-bold text-sm uppercase tracking-widest flex items-center gap-3">
+                <Rocket size={16} /> Applications Open for Batch 2026
+              </span>
+              <span className="text-blue-100 font-medium text-sm uppercase tracking-widest flex items-center gap-3">
+                <CheckCircle2 size={16} /> Powered by H&P Projects
+              </span>
+              <span className="text-white font-bold text-sm uppercase tracking-widest flex items-center gap-3">
+                <Award size={16} /> Research & Patent Support
+              </span>
+              <span className="text-blue-100 font-medium text-sm uppercase tracking-widest flex items-center gap-3">
+                <Users size={16} /> Open for All Branches
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* Features Section */}
       <section className="py-20 bg-white">

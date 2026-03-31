@@ -24,8 +24,17 @@ export default function Footer() {
               Empowering the next generation of tech leaders through hands-on experience and real-world projects.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-blue-600 transition-colors"><Linkedin size={20} /></a>
-              <a href="#" className="hover:text-blue-600 transition-colors"><Twitter size={20} /></a>
+              <a 
+                href="https://www.linkedin.com/company/h-p-projects/?viewAsMember=true" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-blue-600 transition-colors"
+              >
+                <Linkedin size={20} />
+              </a>
+              <a href="https://www.hnpprojects.com/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors">
+                <Twitter size={20} />
+              </a>
               <a href="#" className="hover:text-blue-600 transition-colors"><Instagram size={20} /></a>
               <a href="#" className="hover:text-blue-600 transition-colors"><Github size={20} /></a>
             </div>
@@ -58,14 +67,27 @@ export default function Footer() {
             <ul className="space-y-4 text-sm">
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-blue-600" />
-                <span>contact@aarivyalabs.com</span>
+                <span>company@hnpprojects.com</span>
               </li>
               <li className="flex items-center gap-3">
                 <Linkedin size={18} className="text-blue-600" />
-                <span>Aarivya Labs Official</span>
+                <a 
+                  href="https://www.linkedin.com/company/h-p-projects/?viewAsMember=true" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-600 transition-colors"
+                >
+                  H&P Projects Official
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="text-blue-600 font-bold">W</span>
+                <a href="https://www.hnpprojects.com/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-600 transition-colors font-medium">
+                  Visit Official Website
+                </a>
               </li>
               <li className="mt-6 text-xs text-slate-400">
-                India HQ: Tech Park, Sector 62, Noida, UP
+                Location: Newtown, Kolkata
               </li>
             </ul>
           </div>
