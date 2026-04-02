@@ -290,7 +290,7 @@ export default function Home() {
                 <img 
                   src="https://res.cloudinary.com/dodhvvewu/image/upload/v1775126418/Poster1_iun2vd.png" 
                   alt="Engineering and Technology" 
-                  className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700"
+                  className="w-full h-full object-contain hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
               </div>

@@ -1,8 +1,87 @@
-import { motion, useScroll, useTransform } from 'motion/react';
-import { Target, Eye, Award, Users, Heart, Rocket, Lightbulb } from 'lucide-react';
-import { useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
+import { Target, Eye, Award, Users, Heart, Rocket, Lightbulb, ChevronDown } from 'lucide-react';
+import { useRef, useState } from 'react';
+
+const faqs = [
+  {
+    question: "Who can apply for the internship program?",
+    answer: "Our internship programs are open to students from all colleges, branches, and academic years. Whether you're a first-year student or a final-year graduate, if you have the passion to learn and innovate, you're welcome to apply."
+  },
+  {
+    question: "What is the typical duration of an internship at Aarivya Labs?",
+    answer: "Internships typically range from 2 to 6 months, depending on the domain and project complexity. We also offer flexible durations for research-based projects and patent development."
+  },
+  {
+    question: "Will I receive a certificate upon completion?",
+    answer: "Yes, all successful interns receive a globally recognized certificate from Aarivya Labs, powered by H&P Projects and NextGenCare Foundation. Top performers may also receive a Letter of Recommendation."
+  },
+  {
+    question: "Is the internship program remote or in-person?",
+    answer: "We offer both remote and hybrid internship models to accommodate students from different locations. Most of our technical projects are designed to be executed efficiently in a remote-first environment."
+  },
+  {
+    question: "How can industry partners collaborate with Aarivya Labs?",
+    answer: "Partners can collaborate with us for talent acquisition, joint research projects, patent development, or corporate social responsibility initiatives. Please reach out through our contact page for partnership inquiries."
+  },
+  {
+    question: "What technologies will I work on?",
+    answer: "Depending on your chosen domain, you'll work with industry-standard technologies. This includes React, Node.js, and Tailwind CSS for Web Dev; Python, TensorFlow, and PyTorch for AI/ML; and various specialized tools for Cyber Security and Data Science."
+  },
+  {
+    question: "Is there any stipend or fee for the internship?",
+    answer: "Our internship programs are designed to be accessible. Some specialized research and training tracks may have associated costs for resources and certification, while others may offer stipends based on project performance and duration. Specific details are provided during the selection process."
+  },
+  {
+    question: "What are the working hours?",
+    answer: "We follow a flexible working model. Interns are expected to dedicate 15-20 hours per week, which can be managed according to their academic schedule. We prioritize project milestones over fixed clock-in times."
+  }
+];
+
+interface FAQItemProps {
+  key?: any;
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onClick: () => void;
+}
+
+function FAQItem({ question, answer, isOpen, onClick }: FAQItemProps) {
+  return (
+    <div className="border-b border-slate-200 last:border-0">
+      <button
+        onClick={onClick}
+        className="w-full py-6 flex items-center justify-between text-left group"
+      >
+        <span className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">{question}</span>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="text-slate-400 group-hover:text-blue-600"
+        >
+          <ChevronDown size={24} />
+        </motion.div>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <p className="pb-6 text-slate-600 leading-relaxed">
+              {answer}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
 
 export default function About() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -202,6 +281,38 @@ export default function About() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-24 bg-white relative z-10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">Frequently Asked Questions</h2>
+            <p className="text-slate-600">Find answers to common questions about our internship programs and partnerships.</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-3xl p-8 md:p-12 border border-slate-100 shadow-xl"
+          >
+            {faqs.map((faq, index) => (
+              <FAQItem
+                key={index}
+                question={faq.question}
+                answer={faq.answer}
+                isOpen={openIndex === index}
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+              />
+            ))}
+          </motion.div>
         </div>
       </section>
     </div>
