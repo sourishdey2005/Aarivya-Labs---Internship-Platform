@@ -288,7 +288,7 @@ export default function Home() {
             >
               <div className="aspect-video bg-white rounded-3xl overflow-hidden shadow-2xl border border-slate-100">
                 <img 
-                  src="https://res.cloudinary.com/dodhvvewu/image/upload/v1774204184/e52195d5-0cde-4b5c-9c38-b9fdfbcd3dee_i4uwpf.png" 
+                  src="https://res.cloudinary.com/dodhvvewu/image/upload/v1775126418/Poster1_iun2vd.png" 
                   alt="Engineering and Technology" 
                   className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-700"
                   referrerPolicy="no-referrer"
