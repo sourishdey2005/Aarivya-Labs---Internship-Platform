@@ -171,7 +171,7 @@ export default function Home() {
           {[...Array(4)].map((_, i) => (
             <div key={i} className="flex items-center gap-12 px-6">
               <span className="text-white font-bold text-sm uppercase tracking-widest flex items-center gap-3">
-                <Rocket size={16} /> Applications Open for Batch 2026
+                <Rocket size={16} /> Now Hiring: May 2026 Batch
               </span>
               <span className="text-blue-100 font-medium text-sm uppercase tracking-widest flex items-center gap-3">
                 <CheckCircle2 size={16} /> Powered by H&P Projects
@@ -240,6 +240,71 @@ export default function Home() {
             </motion.div>
           </div>
         </div>
+      </section>
+
+      {/* Hiring Section */}
+      <section className="py-24 bg-blue-50 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="bg-white rounded-[3rem] p-8 md:p-16 shadow-2xl border border-blue-100 flex flex-col lg:flex-row items-center gap-12">
+            <div className="flex-1 w-full text-left">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 text-sm font-bold mb-6">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-600"></span>
+                </span>
+                HIRING NOW
+              </div>
+              <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+                Join the <span className="text-blue-600">May 2026 Batch</span> Internship Program
+              </h2>
+              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
+                We are excited to announce openings for our upcoming May 2026 cohort. This is a unique opportunity to work on industry-level projects across multiple domains including Web Dev, AI, Data Science, and Cyber Security.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
+                {[
+                  { label: "Batch Start", value: "May 2026" },
+                  { label: "Duration", value: "2 - 6 Months" },
+                  { label: "Mode", value: "Remote / Hybrid" },
+                  { label: "Eligibility", value: "All Branches & Years" },
+                ].map((detail, idx) => (
+                  <div key={idx} className="flex flex-col p-4 rounded-2xl bg-slate-50 border border-slate-100">
+                    <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">{detail.label}</span>
+                    <span className="text-lg font-bold text-slate-900">{detail.value}</span>
+                  </div>
+                ))}
+              </div>
+              <Link
+                to="/internship"
+                className="inline-flex bg-blue-600 text-white px-10 py-4 rounded-2xl font-bold text-lg hover:bg-blue-700 transition-all shadow-xl shadow-blue-200 group"
+              >
+                Reserve Your Spot <ArrowRight size={22} className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+            <div className="flex-1 w-full flex justify-center">
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { name: "Web Dev", icon: Code, count: "15+ Seats" },
+                  { name: "AI/ML", icon: Brain, count: "10+ Seats" },
+                  { name: "Security", icon: Shield, count: "8+ Seats" },
+                  { name: "Research", icon: Microscope, count: "5+ Seats" },
+                ].map((domain, idx) => (
+                  <motion.div
+                    key={idx}
+                    whileHover={{ y: -5 }}
+                    className="p-6 bg-blue-50/50 rounded-3xl border border-blue-100/50 text-center flex flex-col items-center"
+                  >
+                    <domain.icon className="text-blue-600 mb-3" size={32} />
+                    <h4 className="font-bold text-slate-900 text-sm mb-1">{domain.name}</h4>
+                    <span className="text-[10px] font-bold text-blue-600 uppercase tracking-widest">{domain.count}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* Decorative backgrounds */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-200/20 rounded-full blur-[120px] -mr-48 -mt-48"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-200/20 rounded-full blur-[120px] -ml-48 -mb-48"></div>
       </section>
 
       {/* About Section */}
